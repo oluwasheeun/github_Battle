@@ -20,9 +20,16 @@ class ProfileUI {
                 <li class="list-group-item">Username: ${user1.login}</li>
                 <li class="list-group-item">Followers: ${user1.followers}</li>
                 <li class="list-group-item">Following: ${user1.following}</li>
-                <li class="list-group-item">Public Repos: ${user1.public_repos}</li>
-                <li class="list-group-item">Public Gists: ${user1.public_gists}</li>
-                <li class="list-group-item">Member Since: ${user1.created_at}</li>
+                <li class="list-group-item">Public Repos: ${
+                  user1.public_repos
+                }</li>
+                <li class="list-group-item">Public Gists: ${
+                  user1.public_gists
+                }</li>
+                <li class="list-group-item">Member Since: ${user1.created_at.slice(
+                  0,
+                  10
+                )}</li>
               </ul>
             </div>
           </div>
@@ -39,9 +46,16 @@ class ProfileUI {
                 <li class="list-group-item">Username: ${user2.login}</li>
                 <li class="list-group-item">Followers: ${user2.followers}</li>
                 <li class="list-group-item">Following: ${user2.following}</li>
-                <li class="list-group-item">Public Repos: ${user2.public_repos}</li>
-                <li class="list-group-item">Public Gists: ${user2.public_gists}</li>
-                <li class="list-group-item">Member Since: ${user2.created_at}</li>
+                <li class="list-group-item">Public Repos: ${
+                  user2.public_repos
+                }</li>
+                <li class="list-group-item">Public Gists: ${
+                  user2.public_gists
+                }</li>
+                <li class="list-group-item">Member Since: ${user2.created_at.slice(
+                  0,
+                  10
+                )}</li>
               </ul>
             </div>
           </div>
@@ -59,17 +73,16 @@ class ProfileUI {
     `;
   }
 
-  displayResult(user1, user2, score) {
+  displayResult(user1, user2, score1, score2) {
     this.profile.innerHTML = `
-    <h1 class="lead">Winner</h1>
+    <h1 class="lead">Result</h1>
         <div class="profiles-container">
           <div id="p-one" class="profile">
-            <p class="lead-2">Winner</p>
+            <p class="lead-2 winner">Winner</p>
             <div class="profile-box">
               <ul class="list-group">
-                <li class="list-group-item score"> <h3> Score: ${score}
+                <li class="list-group-item score"> <h3> Score: ${score1}
                 </h3></li>
-              <ul class="list-group">
                 <li class="list-group-item">
                   <img
                     class="profile-image"
@@ -79,16 +92,25 @@ class ProfileUI {
                 <li class="list-group-item">Username: ${user1.login}</li>
                 <li class="list-group-item">Followers: ${user1.followers}</li>
                 <li class="list-group-item">Following: ${user1.following}</li>
-                <li class="list-group-item">Public Repos: ${user1.public_repos}</li>
-                <li class="list-group-item">Public Gists: ${user1.public_gists}</li>
-                <li class="list-group-item">Member Since: ${user1.created_at}</li>
+                <li class="list-group-item">Public Repos: ${
+                  user1.public_repos
+                }</li>
+                <li class="list-group-item">Public Gists: ${
+                  user1.public_gists
+                }</li>
+                <li class="list-group-item">Member Since: ${user1.created_at.slice(
+                  0,
+                  10
+                )}</li>
               </ul>
             </div>
           </div>
           <div id="p-two" class="profile">
-            <p class="lead-2">Loser</p>
+            <p class="lead-2 loser">Loser</p>
             <div class="profile-box">
               <ul class="list-group">
+              <li class="list-group-item score"> <h3> Score: ${score2}
+                </h3></li>
                 <li class="list-group-item">
                   <img
                     class="profile-image"
@@ -98,9 +120,16 @@ class ProfileUI {
                 <li class="list-group-item">Username: ${user2.login}</li>
                 <li class="list-group-item">Followers: ${user2.followers}</li>
                 <li class="list-group-item">Following: ${user2.following}</li>
-                <li class="list-group-item">Public Repos: ${user2.public_repos}</li>
-                <li class="list-group-item">Public Gists: ${user2.public_gists}</li>
-                <li class="list-group-item">Member Since: ${user2.created_at}</li>
+                <li class="list-group-item">Public Repos: ${
+                  user2.public_repos
+                }</li>
+                <li class="list-group-item">Public Gists: ${
+                  user2.public_gists
+                }</li>
+                <li class="list-group-item">Member Since: ${user2.created_at.slice(
+                  0,
+                  10
+                )}</li>
               </ul>
             </div>
           </div>
@@ -148,5 +177,13 @@ class ProfileUI {
   //clear profile
   clearProfile() {
     this.profile.innerHTML = '';
+  }
+
+  // Input Field Error
+  inputError(input) {
+    input.classList.add('invalid-input');
+    input.addEventListener('keyup', () => {
+      input.classList.remove('invalid-input');
+    });
   }
 }
